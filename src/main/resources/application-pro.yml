@@ -1,0 +1,21 @@
+server:
+  port: 80
+ 
+spring: 
+  datasource:
+    driverClassName : com.mysql.jdbc.Driver
+    url: jdbc:mysql://43.245.223.83:3306/jesse_blog?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+    username: jesse
+    password: Yjp19930626!
+  jpa: 
+    database: MYSQL
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy  
+ttp: 
+  encoding: 
+    charset: UTF-8
+    enabled: true
+  
