@@ -9,4 +9,9 @@ public class PageController {
 	public String toIndex(){
 		return "index";
 	}
+	
+	@RequestMapping(value="backstage")
+	public String toBackstage(){
+		return "backstage/backstage";
+	}
 }

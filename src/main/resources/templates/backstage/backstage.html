@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"></meta>
+    <title>后台管理</title>
+    <meta name="description" content=""></meta>
+    <meta name="viewport" content="width=device-width"></meta>
+
+		<script th:src="@{/js/jquery.min.js}" src="js/jquery.min.js"></script>
+		<script type="text/javascript" th:src="@{/js/wangEditor.min.js}" src="js/wangEditor.min.js"></script>
+		<script th:src="@{/js/bootstrap-paginator.min.js}" src=""></script>
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="css/bootstrap.min.css"></link>
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" th:href="@{/css/font-awesome/css/font-awesome.min.css}" href="css/font-awesome/css/font-awesome.min.css"></link>
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="css/style.css" id="theme-styles"></link>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="css/style.css"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/wangEditor.min.css}" href="css/wangEditor.min.css"></link>
+
+	
+</head>
+<body>
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<h3 class="text-center">
+					博客后台管理系统
+				</h3>
+			</div>
+		</div>
+		<div class="row clearfix">
+			<div class="col-md-6 column">
+					<div id="articleTitles" class="row">
+						文章标题列表
+					</div>
+					<div id="paging">
+						<ul id="pageLimit"></ul> 
+					</div>
+					<button id="getArt" style="display:none"></button>
+			</div>
+			
+			<div class="col-md-6 column">
+				标题<input id="title" type="text" class="form-control" style="display:block"/>
+				类型      <select  name="selectAge" id="articleType"  class="combobox form-control">
+						<option></option>   
+				        <option value="1">个人日记</option>   
+				        <option value="2">随笔</option>   
+				        <option value="3">技术</option>   
+				      </select>   
+				<div id="editor" style="height:800px;">
+				</div>
+				<button id="btn"  type="button" class="btn btn-default">发布</button>
+			</div>
+		</div> 	
+
+	</div>
+	
+	
+	
+	
+	
+	
+	<script type="text/javascript">
+	/*<![CDATA[*/
+	var titles = "";
+
+	$(function(){
+		$("#getArt").click();
+	});
+	
+	$("#getArt").click(function(){
+		 getArticleByPage(1);
+	});
+	
+	function getArticleByPage(page){
+		$.ajax({
+			url:"/article/page/"+page,
+			dataType:"json",
+			success:function(data){
+				$("#articleTitles").empty();
+				titles="";
+				var articleListLength = data.content.length;
+				for(var i=0;i<articleListLength;i++){
+					console.log(data.content[i].createDate);
+					var date = data.content[i].createDate.substring(0,11);
+					/* var date = data.content[i].createDate.substring(0,11); */
+					console.log(date.substring(0,11));
+					titles += '<span id="'+data.content[i].id+'" style="display:inline"><a href="/article/'+data.content[i].id+'"  >' +data.content[i].title+'</a></span>';
+					//添加编辑和删除按钮
+					titles += '<button  id="delbtn"   class="btn btn-default" >删除</button><br/>'
+				}
+				console.log(titles);
+				$("#articleTitles").html(titles);
+				$('#pageLimit').bootstrapPaginator({    
+				    currentPage: data.number+1,    
+				    totalPages: data.totalPages,    
+				    size:"normal",    
+				    bootstrapMajorVersion: 3,    
+				    alignment:"center",    
+				    numberOfPages:5, 
+				    itemTexts: function (type, page, current) {        
+				        switch (type) {            
+				        case "first": return "首页";            
+				        case "prev": return "上一页";            
+				        case "next": return "下一页";            
+				        case "last": return "末页";            
+				        case "page": return page;
+				        }
+				    },
+			/* 	    pageUrl: function(type, page, current){              
+				   	return "/article/page/"+page;  
+			        }   */
+			        onPageClicked:function(event, originalEvent, type, page){
+			        	getArticleByPage(page);
+				    }
+				});
+			}
+		});
+	};
+	
+
+	
+    	$("#articleTitles").on("click","#delbtn",function(){
+    		console.log($(this).prev().attr("id"));
+    		var id = $(this).prev().attr("id");
+    		var flag = confirm("ok吗");
+    		if(flag == true){
+    			$.ajax({
+	    			url:"/article/"+id,
+	    			type:"delete",
+	    			success:function(data){
+	    				if(data == 1){
+	    					alert("删了");
+	    				}
+	    				$("#getArt").click();
+	    			}
+	    		});
+    		}else{
+    			
+    		}
+	    		
+    		
+    	});
+
+    	
+
+	
+	
+
+	/*]]>*/
+	</script>
+	
+	
+	
+	
+	
+	
+	
+		<script type="text/javascript">
+		    var editor = new wangEditor('editor');
+		    editor.config.uploadImgUrl = '/img/upload';
+		    editor.config.uploadImgFileName = 'file';
+		    editor.create();
+		</script>
+		<script type="text/javascript">
+		    
+		
+		    $('#btn').click(function () {
+		        // 获取编辑器区域完整html代码
+		        var html = editor.$txt.html();
+		
+		        // 获取编辑器纯文本内容
+		        var text = editor.$txt.text();
+		
+		        // 获取格式化后的纯文本
+		        var formatText = editor.$txt.formatText();
+		        
+		        //获取下拉框内容
+		        var selectType = $("#articleType").val();
+		        var selectTypeText = $("#articleType").find("option:selected").text();
+		        
+		        //获得标题
+		        var title = $("#title").val();
+		        console.log(title);
+		        console.log(html);
+		        console.log(selectType);
+		        console.log(selectTypeText); 	
+		        var json={};
+		        json.title=title;
+		        json.content=html;
+		        json.type=selectTypeText;
+		        $.ajax({
+		        	url:"/article/add",
+		        	type:"post",
+		        	data:JSON.stringify(json),
+		            contentType:"application/json;charset=utf-8",
+		        	success:function(data){
+		        		if(data==1){
+		        			alert("新增成功");
+		        		}else{
+		        			alert("没保存上");
+		        		}
+		        	}
+		        });
+		        
+		    });
+		    
+
+		    
+		</script>
+		
+		
+
+</body>
+</html>
