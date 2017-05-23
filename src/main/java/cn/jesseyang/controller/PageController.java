@@ -17,6 +17,11 @@ public class PageController {
 	//页脚
 	@RequestMapping(value="footer")
 	public String footer(){
-		return "footer";
+		return "fragment/footer";
+	}
+	//页头
+	@RequestMapping(value="nav")
+	public String nav(){
+		return "fragment/nav";
 	}
 }
