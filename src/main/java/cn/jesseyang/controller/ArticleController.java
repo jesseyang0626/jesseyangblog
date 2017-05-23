@@ -55,16 +55,9 @@ public class ArticleController {
 	
 	@RequestMapping("/add")
 	@ResponseBody
-	public String addArticle(@RequestBody Map map){
+	public String addArticle(@RequestBody ArticleEntity articleEntity){
 		try{
-			String title = (String) map.get("title");
-			String content = (String) map.get("content");
-			String type = (String) map.get("type");
 			Date date = new Date();
-			ArticleEntity articleEntity = new ArticleEntity();
-			articleEntity.setTitle(title);
-			articleEntity.setContent(content);
-			articleEntity.setType(type);
 			articleEntity.setCreateDate(date);
 			articleService.save(articleEntity);
 		}catch (Exception e) {
@@ -100,9 +93,6 @@ public class ArticleController {
 		articleService.deleteById(id);
 		return "1";
 	}
-	
-	
-
 	
 	@RequestMapping("/getTop6")
 	@ResponseBody

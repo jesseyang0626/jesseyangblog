@@ -1,6 +1,7 @@
 package cn.jesseyang.controller;
 
-import java.io.File;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -13,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
@@ -51,7 +50,54 @@ public class ImageController {
 	@ResponseBody
 	public String upload(@RequestParam MultipartFile file,HttpServletRequest hsr,HttpServletResponse res){
 		System.out.println("calld upload");
-		String filePath = "";
+		byte[] buffer = null;  
+        try  
+        {  
+        	key=file.getOriginalFilename();
+            InputStream fis = file.getInputStream();  
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();  
+            byte[] b = new byte[1024];  
+            int n;  
+            while ((n = fis.read(b)) != -1)  
+            {  
+                bos.write(b, 0, n);  
+            }  
+            fis.close();  
+            bos.close();  
+            buffer = bos.toByteArray();  
+        }  
+        catch (FileNotFoundException e)  
+        {  
+            e.printStackTrace();  
+        }  
+        catch (IOException e)  
+        {  
+            e.printStackTrace();  
+        }  
+		System.out.println("calld ok");
+		
+		
+			try {  
+		        //调用put方法上传  
+		        Response ress = uploadManager.put(buffer, key, getUpToken());  
+		        //打印返回的信息  
+				System.out.println(ress.isOK());
+				System.out.println(ress.bodyString());   
+	        } catch (QiniuException e) {  
+	            Response r = e.response;  
+	            // 请求失败时打印的异常的信息  
+	            System.out.println(r.toString());  
+	            try {  
+	                //响应的文本信息  
+	              System.out.println(r.bodyString());  
+	            } catch (QiniuException e1) {  
+	                //ignore  
+	            }  
+	        } 
+		return url+file.getOriginalFilename(); 
+			
+	}
+		/*String filePath = "";
 		try {
 			String path = hsr.getServletContext().getRealPath("");
 			System.out.println(hsr.getServletContext().getRealPath(""));
@@ -87,9 +133,9 @@ public class ImageController {
 	                //ignore  
 	            }  
 	        } 
-		return url+file.getOriginalFilename(); 
-			
-	}
+		return url+file.getOriginalFilename(); */
+		
+
 	
 	
 	  //普通上传    测试方法
