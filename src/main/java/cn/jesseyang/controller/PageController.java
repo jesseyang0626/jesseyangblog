@@ -14,6 +14,11 @@ public class PageController {
 	public String toBackstage(){
 		return "backstage/backstage";
 	}
+	//文章详情页
+	@RequestMapping(value="/article")
+	public String toPost(){
+		return "article";
+	}
 	//页脚
 	@RequestMapping(value="footer")
 	public String footer(){

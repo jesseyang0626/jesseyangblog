@@ -3,23 +3,21 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
 
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>JesseYang Blog</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{lib/bootstrap/css/bootstrap.min.css}" href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- Additional fonts for this theme -->
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link th:href="@{lib/font-awesome/css/font-awesome.min.css}" href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- Custom styles for this theme -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
+    <link th:href="@{css/clean-blog.min.css}"  href="css/clean-blog.min.css" rel="stylesheet"/>
 
     <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
     <style>
@@ -40,28 +38,7 @@
 
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
-        <div class="container">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand page-scroll" href="index.html">Start Bootstrap</a>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="post.html">Sample Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        
     </nav>
 
     <!-- Page Header -->
@@ -109,7 +86,7 @@
                     <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
 
                     <a href="#">
-                        <img class="img-responsive" src="img/post-sample-image.jpg" alt="">
+                        <img class="img-responsive" src="img/post-sample-image.jpg" alt=""/>
                     </a>
                     <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
 
@@ -123,56 +100,25 @@
         </div>
     </article>
 
-    <hr>
+    <hr></hr>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                    <ul class="list-inline text-center">
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2017</p>
-                </div>
-            </div>
-        </div>
+    <footer id="footer">
     </footer>
 
     <!-- jQuery Version 3.1.1 -->
-    <script src="lib/jquery/jquery.js"></script>
+    <script th:src="@{lib/jquery/jquery.js}"  src="lib/jquery/jquery.js"></script>
 
     <!-- Tether -->
-    <script src="lib/tether/tether.min.js"></script>
+    <script th:src="@{lib/tether/tether.min.js}" src="lib/tether/tether.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script th:src="@{lib/bootstrap/js/bootstrap.min.js}" src="lib/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Theme JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+    <script th:src="@{js/clean-blog.min.js}" src="js/clean-blog.min.js"></script>
+	 <!--  JavaScript -->
+    <script th:src="@{js/article.js}" src="js/article.js"></script>
 
 </body>
 
