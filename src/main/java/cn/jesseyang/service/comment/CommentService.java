@@ -12,5 +12,5 @@ public interface CommentService {
 	public void save(CommentEntity CommentEntity);
 	public CommentEntity findById(int id);
 	public Page<CommentEntity> findCommentEntityByPageable(Pageable pageable);
-	public Page<CommentEntity> findByArticleId(String articleid,Pageable pageable);
+	public Page<CommentEntity> findByArticleId(String articleid,int page);
 }

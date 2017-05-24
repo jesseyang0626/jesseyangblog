@@ -45,14 +45,14 @@ public class ArticleController {
 	@RequestMapping("/getArticlesByPage/{page}")
 	@ResponseBody
 	public Page<ArticleEntity> getArticlesByPage(@PathVariable int page){
-		return articleService.findArticleEntityByPageable(page,5);
+		return articleService.findArticleEntityByPageable(page,10);
 	}
 	@RequestMapping(value="/page/{page}",method=RequestMethod.GET)
 	@ResponseBody
 	public Page<ArticleEntity> findByPage(@PathVariable int page){
 		return articleService.findArticleEntityByPageable(page,10);
 	}
-	
+	//添加文章
 	@RequestMapping("/add")
 	@ResponseBody
 	public String addArticle(@RequestBody ArticleEntity articleEntity){
@@ -80,8 +80,7 @@ public class ArticleController {
 	  ArticleEntity articleEntity = articleService.findById(Integer.valueOf(id));
 	  session.setAttribute("article", articleEntity);
 	  Sort sort = new Sort(Direction.DESC,"id");
-	  Pageable pageable = new PageRequest(0, 10,sort);
-	  Page<CommentEntity> comments = commentService.findByArticleId(id, pageable);
+	  Page<CommentEntity> comments = commentService.findByArticleId(id, 0);
 	  session.setAttribute("comments", comments);
 	  System.out.println(articleEntity.getContent());
 	  return "articleDetail";   
@@ -93,7 +92,7 @@ public class ArticleController {
 		articleService.deleteById(id);
 		return "1";
 	}
-	
+	//得到最新的6个文章
 	@RequestMapping("/getTop6")
 	@ResponseBody
 	public Page<ArticleEntity> getTop6(){

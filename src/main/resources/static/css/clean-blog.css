@@ -348,3 +348,59 @@ img::-moz-selection {
 
 body {
   -webkit-tap-highlight-color: #0085A1; }
+  
+ /* Blog aside widgets */
+.aside-widget {
+  margin-bottom: 40px;
+  border: 1px solid #ddd;
+}
+
+.aside-widget header {
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #ddd;
+}
+
+.aside-widget header h3 {
+  font-size: 24px;
+  padding: 10px 20px 3px 20px;
+  margin-top: 0;
+  color: #48535f;
+}
+
+.aside-widget .body {
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.aside-widget a {
+  color: #5b6268;
+}
+
+/* ==============
+The list with special bullet points, used both on blog widgets as well as in the footer (both styled here) 
+=================*/
+.clean-list {
+  list-style: none;
+}
+
+.clean-list li {
+  line-height: 23px;
+  margin-bottom: 14px;
+}
+
+.clean-list li a:hover,
+.clean-list li a:focus {
+  color: #222;
+}
+
+.clean-list li:before {
+  content: "";
+  background-color: #444;
+  border-style: solid;
+  border-width: 4px 4px;
+  display: block;
+  width: 8px;
+  left: -20px;
+  top: 15px;
+  position: relative;
+}

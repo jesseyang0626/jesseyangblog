@@ -46,9 +46,7 @@ public class CommentController {
 		HttpSession session = hsr.getSession();
 		ArticleEntity articleEntity = (ArticleEntity) session.getAttribute("article");
 		int articleId = articleEntity.getId();
-		Sort sort = new Sort(Direction.DESC,"id");
-		Pageable pageable = new PageRequest(page-1, 10,sort);
-		Page<CommentEntity> comments = commentService.findByArticleId(articleId+"", pageable);
+		Page<CommentEntity> comments = commentService.findByArticleId(articleId+"", page);
 		return comments;
 	}
 }

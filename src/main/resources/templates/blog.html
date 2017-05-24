@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>JesseYang's Blog</title>
+
+
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{lib/bootstrap/css/bootstrap.min.css}" href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Additional fonts for this theme -->
+    <link th:href="@{lib/font-awesome/css/font-awesome.min.css}" href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Custom styles for this theme -->
+    <link th:href="@{css/clean-blog.css}"  href="css/clean-blog.css" rel="stylesheet"/>
+
+    <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
+    
+    <!-- jQuery Version 3.1.1 -->
+    <script th:src="@{lib/jquery/jquery.js}"  src="lib/jquery/jquery.js"></script>
+
+    <!-- Tether -->
+    <script th:src="@{lib/tether/tether.min.js}" src="lib/tether/tether.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script th:src="@{lib/bootstrap/js/bootstrap.min.js}" src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script th:src="@{js/bootstrap-paginator.min.js}" src=""></script>
+    <!-- Theme JavaScript -->
+    <script th:src="@{js/clean-blog.min.js}" src="js/clean-blog.min.js"></script>
+	 <!--  JavaScript -->
+    <script th:src="@{js/blog.js}" src="js/blog.js"></script>
+    
+    
+    
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+    
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
+
+    </nav>
+
+    <!-- Page Header -->
+    <header class="intro-header" style="background-image: url('img/about-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                    <div class="site-heading">
+                        <h1>JesseYang's Blog</h1>
+                        <span class="subheading">JesseYang on the way</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div  class="row">
+            <div class="col-lg-8 col-md-10 offset-md-1">
+                <div class="post-preview" id="titles">
+                    <a href="post.html">
+                        <h2 class="post-title">
+                            Man must explore, and this is exploration at its greatest
+                        </h2>
+                        <h3 class="post-subtitle">
+                            Problems look mighty small from 150 miles up
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2017</p>
+              		<hr></hr>
+                </div>
+                <div>
+					<ul id="pages"></ul>
+				</div>
+            </div>
+
+            <!-- 文章类型 -->
+            <div class="col-lg-2  col-md-10 offset-md-1">
+                 <div class="aside-widget">
+			         <header>
+			             <h3>文章类型</h3>
+			         </header>
+			         <div class="body">
+			             <ul class="clean-list" id="top6">
+			                 <li><a href="">随笔</a></li>
+			                 <li><a href="">技术</a></li>
+			                 <li><a href="">日记</a></li>
+
+			             </ul>
+			         </div>
+			     </div>
+            </div>
+        </div>
+    </div>
+
+    <hr></hr>
+
+    <!-- Footer -->
+    <footer id="footer">
+        
+    </footer>
+
+
+</body>
+
+</html>
