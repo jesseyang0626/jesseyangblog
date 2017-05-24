@@ -18,18 +18,19 @@
 
     <!-- Custom styles for this theme -->
     <link th:href="@{css/clean-blog.css}"  href="css/clean-blog.css" rel="stylesheet"/>
+     <link th:href="@{css/jBootsrapPage.css}"  href="css/jBootsrapPage.css" rel="stylesheet"/>
 
     <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
     
     <!-- jQuery Version 3.1.1 -->
-    <script th:src="@{lib/jquery/jquery.js}"  src="lib/jquery/jquery.js"></script>
+    <script th:src="@{js/jquery.min.js}"  src="lib/jquery/jquery.js"></script>
 
     <!-- Tether -->
     <script th:src="@{lib/tether/tether.min.js}" src="lib/tether/tether.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script th:src="@{lib/bootstrap/js/bootstrap.min.js}" src="lib/bootstrap/js/bootstrap.min.js"></script>
-	<script th:src="@{js/bootstrap-paginator.min.js}" src=""></script>
+	<script th:src="@{js/jBootstrapPage.js}" src=""></script>
     <!-- Theme JavaScript -->
     <script th:src="@{js/clean-blog.min.js}" src="js/clean-blog.min.js"></script>
 	 <!--  JavaScript -->
@@ -89,7 +90,7 @@
               		<hr></hr>
                 </div>
                 <div>
-					<ul id="pages"></ul>
+					 <ul class="pagination"></ul>
 				</div>
             </div>
 
