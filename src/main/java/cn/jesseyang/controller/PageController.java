@@ -19,10 +19,9 @@ public class PageController {
 	public String toBlog(){
 		return "blog";
 	}
-	//文章详情页
-	@RequestMapping(value="/article")
-	public String toPost(){
-		return "article";
+	@RequestMapping(value="about")
+	public String toAbout(){
+		return "about";
 	}
 	//页脚
 	@RequestMapping(value="footer")

@@ -4,9 +4,9 @@ server:
 spring: 
   datasource:
     driverClassName : com.mysql.jdbc.Driver
-    url: jdbc:mysql://43.245.223.83:3306/jesse_blog?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
-    username: jesse
-    password: Yjp19930626!
+    url: jdbc:mysql://103.42.215.9:3306/jesse_blog?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+    username: root
+    password: Jesse19930626!
   jpa: 
     database: MYSQL
     show-sql: true

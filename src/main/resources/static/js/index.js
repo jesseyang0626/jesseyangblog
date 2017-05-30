@@ -13,7 +13,7 @@ $(function(){
 			for(var i=0;i<data.content.length;i++){
 				content +='<div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">';
 				content +=' <div class="post-preview">';
-				content +='<a href="post.html">';
+				content +='<a href="/article/'+data.content[i].id+'">';
 				content +='<h2 class="post-title">';
 				content +=data.content[i].title;
 				content +='</h2>';
@@ -32,7 +32,7 @@ $(function(){
 			}
 			content +='<div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">';
 			content +='<div class="clearfix float-right">';
-			content +='<a class="btn btn-secondary float-right" href="#">Older Posts &rarr;</a>';
+			content +='<a class="btn btn-secondary float-right" href="/blog">看更多 &rarr;</a>';
 			content +='</div>';
 			content +='</div>';
 			$("#titlerow").append(content);

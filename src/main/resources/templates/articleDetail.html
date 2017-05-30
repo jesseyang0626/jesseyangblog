@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -11,13 +11,13 @@
     <title>JesseYang Blog</title>
 
     <!-- Bootstrap Core CSS -->
-    <link th:href="@{lib/bootstrap/css/bootstrap.min.css}" href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- Additional fonts for this theme -->
-    <link th:href="@{lib/font-awesome/css/font-awesome.min.css}" href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- Custom styles for this theme -->
-    <link th:href="@{css/clean-blog.min.css}"  href="css/clean-blog.min.css" rel="stylesheet"/>
+    <link th:href="@{/css/clean-blog.min.css}"  href="css/clean-blog.min.css" rel="stylesheet"/>
 
     <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
     <style>
@@ -41,14 +41,14 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="intro-header" style="background-image: url('img/post-bg.jpg')">
+    <header class="intro-header" style="background-image: url('/img/post-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
                     <div class="post-heading">
-                        <h1>Man must explore, and this is exploration at its greatest</h1>
-                        <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
-                        <span class="meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2017</span>
+                        <h1 id="articletitle">Man must explore, and this is exploration at its greatest</h1>
+                       <!--  <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
+                        <span class="meta" id="createDate">Posted by <a href="#">Start Bootstrap</a> on August 24, 2017</span>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
     <article>
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 offset-lg-2 col-md-10 offset-md-1">
+                <div class="col-lg-6 offset-lg-2 col-md-10 offset-md-1" id="content">
                     <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
 
                     <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
@@ -73,40 +73,44 @@
 
                 </div>
                 <div class="col-lg-2  col-md-10 offset-md-1">
-                    <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+<!--                     <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
 
                     <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
-
-                    <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.</p>
-
-                    <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.</p>
-
-                    <p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.</p>
-
-
+ -->
+              
                 </div>
             </div>
+            	    <hr></hr>
+
+		    <!-- Footer -->
+		    <footer id="footer">
+		    </footer>
         </div>
     </article>
 
-    <hr></hr>
 
-    <!-- Footer -->
-    <footer id="footer">
-    </footer>
     
     
     <!-- jQuery Version 3.1.1 -->
-    <script th:src="@{lib/jquery/jquery.js}"  src="lib/jquery/jquery.js"></script>
+    <script th:src="@{/lib/jquery/jquery.js}"  src="lib/jquery/jquery.js"></script>
     <!-- Tether -->
-    <script th:src="@{lib/tether/tether.min.js}" src="lib/tether/tether.min.js"></script>
+    <script th:src="@{/lib/tether/tether.min.js}" src="lib/tether/tether.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script th:src="@{lib/bootstrap/js/bootstrap.min.js}" src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script th:src="@{/lib/bootstrap/js/bootstrap.min.js}" src="lib/bootstrap/js/bootstrap.min.js"></script>
     <!-- Theme JavaScript -->
-    <script th:src="@{js/clean-blog.min.js}" src="js/clean-blog.min.js"></script>
+    <script th:src="@{/js/clean-blog.min.js}" src="js/clean-blog.min.js"></script>
 	 <!--  JavaScript -->
-    <script th:src="@{js/article.js}" src="js/article.js"></script>
-
+    <script th:src="@{/js/article.js}" src="js/article.js"></script>
+	
+	<script th:inline="javascript">//引用  
+	   /*<![CDATA[*/  
+	    var article = [[${session.article}]];//取值  
+	    console.log(article);
+	   /*]]>*/  
+	   $("#articletitle").text(article.title);
+	   $("#createDate").text(article.createDate);
+	   $("#content").html(article.content);
+	</script>  
 </body>
 
 </html>

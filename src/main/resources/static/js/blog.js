@@ -16,7 +16,7 @@ $(function(){
 			totalEle=data.totalElements;
 			pageSize=data.numberOfElements;
 			for(var i=0;i<data.content.length;i++){
-	      		titles+='<a href="post.html">';
+	      		titles+='<a href="article/'+data.content[i].id+'">';
 	      		titles+=' <h2 class="post-title">';
 	      		titles+=data.content[i].title;
 	      		titles+='</h2>';
@@ -34,14 +34,14 @@ $(function(){
 		            onPageClicked: function(obj, pageIndex) {
 		            	var page=pageIndex+1;
 		            	$.ajax({
-			        		url:"article/page/"+page,
+			        		url:"/article/page/"+page,
 			        		dataType:"json",
 			        		success:function(data){
 			        				$("#titles").empty();
 			        				titles="";
 			        				var articleListLength = data.content.length;
 			        				for(var i=0;i<articleListLength;i++){
-			        					titles+='<a href="post.html">';
+			        					titles+='<a href="/article/'+data.content[i].id+'">';
 			        		      		titles+=' <h2 class="post-title">';
 			        		      		titles+=data.content[i].title;
 			        		      		titles+='</h2>';

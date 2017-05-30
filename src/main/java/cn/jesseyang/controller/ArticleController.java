@@ -79,10 +79,9 @@ public class ArticleController {
 	  HttpSession session = hsr.getSession();
 	  ArticleEntity articleEntity = articleService.findById(Integer.valueOf(id));
 	  session.setAttribute("article", articleEntity);
-	  Sort sort = new Sort(Direction.DESC,"id");
+/*	  Sort sort = new Sort(Direction.DESC,"id");
 	  Page<CommentEntity> comments = commentService.findByArticleId(id, 0);
-	  session.setAttribute("comments", comments);
-	  System.out.println(articleEntity.getContent());
+	  session.setAttribute("comments", comments);*/
 	  return "articleDetail";   
 	}  
 	
